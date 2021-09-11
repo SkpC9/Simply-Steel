@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "simplysteel:steel_ingot"
+    }
+  },
+  "result": {
+    "item": "simplysteel:steel_door",
+    "count": 3
+  }
+}

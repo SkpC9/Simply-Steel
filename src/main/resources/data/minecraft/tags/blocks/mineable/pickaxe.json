@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "simplysteel:steel_block",
+    "simplysteel:steel_bars",
+    "simplysteel:steel_door",
+    "simplysteel:steel_trapdoor"
+  ]
+}

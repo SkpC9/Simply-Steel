@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "simplysteel:steel_anvil",
+    "simplysteel:chipped_steel_anvil",
+    "simplysteel:damaged_steel_anvil"
+  ]
+}

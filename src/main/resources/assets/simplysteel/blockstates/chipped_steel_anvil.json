@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simplysteel:block/chipped_steel_anvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "simplysteel:block/chipped_steel_anvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "simplysteel:block/chipped_steel_anvil"
+    },
+    "facing=west": {
+      "model": "simplysteel:block/chipped_steel_anvil",
+      "y": 90
+    }
+  }
+}
