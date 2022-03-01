@@ -1,0 +1,34 @@
+{
+  "parent": "simplysteel:story/blast_steel",
+  "display": {
+    "icon": {
+      "item": "simplysteel:steel_anvil"
+    },
+    "title": {
+      "translate": "advancement.story.simplysteel.place_steel_anvil.title"
+    },
+    "description": {
+      "translate": "advancement.story.simplysteel.place_steel_anvil.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "anvil": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "simplysteel:steel_anvil",
+        "item": {
+          "items": ["simplysteel:steel_anvil"]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "anvil"
+    ]
+  ]
+}

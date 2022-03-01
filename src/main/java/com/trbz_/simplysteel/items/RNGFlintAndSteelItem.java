@@ -2,6 +2,8 @@ package com.trbz_.simplysteel.items;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +19,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 
 import net.minecraft.world.item.Item.Properties;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.Random;
 
@@ -34,26 +37,27 @@ public class RNGFlintAndSteelItem extends Item {
     */
 
    public InteractionResult useOn(UseOnContext context) {
-      Player playerentity = context.getPlayer();
-      Level world = context.getLevel();
+      Player player = context.getPlayer();
+      Level level = context.getLevel();
       BlockPos blockpos = context.getClickedPos();
-      BlockState blockstate = world.getBlockState(blockpos);
+      BlockState blockstate = level.getBlockState(blockpos);
       Random random = new Random();
       float strikingFloat = random.nextFloat();
       boolean strikingSuccess = successChance >= strikingFloat;
 
-      if (CampfireBlock.canLight(blockstate)) {
+      if (CampfireBlock.canLight(blockstate) || CandleBlock.canLight(blockstate) || CandleCakeBlock.canLight(blockstate)) {
 
-         world.playSound(playerentity, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
+         level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
 
          //client just pretends it works until server says something to fix randomness desync
-         if(world.isClientSide()) return InteractionResult.SUCCESS;
+         if(level.isClientSide()) return InteractionResult.SUCCESS;
 
          if(strikingSuccess) {
-            world.setBlock(blockpos, blockstate.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), 11);
+            level.setBlock(blockpos, blockstate.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), 11);
+            level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
          }
-         if (playerentity != null) {
-            context.getItemInHand().hurtAndBreak(1, playerentity, (p_219999_1_) -> {
+         if (player != null) {
+            context.getItemInHand().hurtAndBreak(1, player, (p_219999_1_) -> {
                p_219999_1_.broadcastBreakEvent(context.getHand());
             });
          }
@@ -61,23 +65,23 @@ public class RNGFlintAndSteelItem extends Item {
          return InteractionResult.SUCCESS;
       } else {
          BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
-         if (BaseFireBlock.canBePlacedAt(world, blockpos1, context.getHorizontalDirection())) {
+         if (BaseFireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
 
-            world.playSound(playerentity, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
+            level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
 
             //client just pretends it works until server says something to fix randomness desync
-            if(world.isClientSide()) return InteractionResult.SUCCESS;
+            if(level.isClientSide()) return InteractionResult.SUCCESS;
 
             if(strikingSuccess) {
-               BlockState blockstate1 = BaseFireBlock.getState(world, blockpos1);
-               world.setBlock(blockpos1, blockstate1, 11);
+               BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
+               level.setBlock(blockpos1, blockstate1, 11);
             }
             ItemStack itemstack = context.getItemInHand();
-            if (playerentity instanceof ServerPlayer) {
+            if (player instanceof ServerPlayer) {
                if(strikingSuccess) {
-                  CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) playerentity, blockpos1, itemstack);
+                  CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos1, itemstack);
                }
-               itemstack.hurtAndBreak(1, playerentity, (p_219998_1_) -> {
+               itemstack.hurtAndBreak(1, player, (p_219998_1_) -> {
                   p_219998_1_.broadcastBreakEvent(context.getHand());
                });
             }

@@ -1,0 +1,138 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "simplysteel:steel_nugget_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_steel_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_pickaxe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_shovel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_axe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_hoe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_sword"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_leggings"
+            ]
+          }
+        ]
+      }
+    },
+    "has_steel_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplysteel:steel_boots"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "simplysteel:steel_nugget_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_steel_pickaxe",
+      "has_steel_shovel",
+      "has_steel_axe",
+      "has_steel_hoe",
+      "has_steel_sword",
+      "has_steel_helmet",
+      "has_steel_chestplate",
+      "has_steel_leggings",
+      "has_steel_boots",
+      "has_the_recipe"
+    ]
+  ]
+}

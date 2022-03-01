@@ -1,0 +1,101 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:blaze_powder"
+    },
+    "title": {
+      "translate": "advancements.adventure.simplysteel.watch_the_world_burn.title"
+    },
+    "description": {
+      "translate": "advancements.husbandry.watch_the_world_burn.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "criteria": {
+    "flint_and_steel": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "delta": {
+          "max": -1
+        },
+        "item": {
+          "items": [
+            "minecraft:flint_and_steel"
+          ],
+          "durability": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "flint_and_iron": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "delta": {
+          "max": -1
+        },
+        "item": {
+          "items": [
+            "simplysteel:flint_and_iron"
+          ],
+          "durability": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "quartz_and_steel": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "delta": {
+          "max": -1
+        },
+        "item": {
+          "items": [
+            "simplysteel:quartz_and_steel"
+          ],
+          "durability": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "quartz_and_iron": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "delta": {
+          "max": -1
+        },
+        "item": {
+          "items": [
+            "simplysteel:quartz_and_iron"
+          ],
+          "durability": {
+            "max": 1
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "flint_and_steel"
+    ],
+    [
+      "flint_and_iron"
+    ],
+    [
+      "quartz_and_steel"
+    ],
+    [
+      "quartz_and_iron"
+    ]
+  ]
+}
