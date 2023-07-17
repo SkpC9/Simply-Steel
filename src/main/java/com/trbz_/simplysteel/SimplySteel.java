@@ -35,6 +35,8 @@ public class SimplySteel {
     private static IProxy proxy;
 
     public SimplySteel() {
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the doClientStuff method for modloading
@@ -42,12 +44,10 @@ public class SimplySteel {
 
         RegistryHandler.init();
 
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-
         proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 
         MinecraftForge.EVENT_BUS.register(new SimplySteelEvents());
+
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::entityAttributeCreationEvent);
 

@@ -22,11 +22,7 @@
         "location": [
           {
             "block": "simplysteel:steel_anvil",
-            "item": {
-              "items": [
-                "simplysteel:steel_anvil"
-              ]
-            }
+            "condition": "minecraft:block_state_property"
           }
         ]
       }

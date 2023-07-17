@@ -134,51 +134,5 @@ public class RegistryHandler {
     public static final RegistryObject<EntityType<FallingSteelAnvil>> FALLING_ANVIL = ENTITIES.register("falling_anvil", () -> EntityType.Builder.<FallingSteelAnvil>of(FallingSteelAnvil::new, MobCategory.MISC).sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(20).build(new ResourceLocation(SimplySteel.MOD_ID + ":falling_anvil").toString()));
     public static final RegistryObject<EntityType<SteelGolem>> STEEL_GOLEM = ENTITIES.register("steel_golem", () -> EntityType.Builder.<SteelGolem>of(SteelGolem::new, MobCategory.MISC).sized(1.4F, 2.7F).clientTrackingRange(10).build(new ResourceLocation(SimplySteel.MOD_ID + ":steel_golem").toString()));
 
-    @SubscribeEvent
-    public void buildContents(BuildCreativeModeTabContentsEvent event) {
-
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(STEEL_INGOT);
-            event.accept(CRUDE_IRON);
-            event.accept(STEEL_NUGGET);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(STEEL_SHOVEL);
-            event.accept(STEEL_PICKAXE);
-            event.accept(STEEL_AXE);
-            event.accept(STEEL_HOE);
-            event.accept(QUARTZ_AND_STEEL);
-            event.accept(FLINT_AND_IRON);
-            event.accept(QUARTZ_AND_IRON);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.accept(STEEL_SWORD);
-            event.accept(STEEL_HELMET);
-            event.accept(STEEL_CHESTPLATE);
-            event.accept(STEEL_LEGGINGS);
-            event.accept(STEEL_BOOTS);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(STEEL_BLOCK_ITEM);
-            event.accept(STEEL_BARS_ITEM);
-            event.accept(STEEL_DOOR_ITEM);
-            event.accept(STEEL_TRAPDOOR_ITEM);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            event.accept(STEEL_DOOR_ITEM);
-            event.accept(STEEL_TRAPDOOR_ITEM);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(STEEL_ANVIL_ITEM);
-            event.accept(CHIPPED_STEEL_ANVIL_ITEM);
-            event.accept(DAMAGED_STEEL_ANVIL_ITEM);
-        }
-
-    }
 
 }
