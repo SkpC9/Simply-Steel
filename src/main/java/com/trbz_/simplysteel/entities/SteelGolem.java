@@ -49,12 +49,11 @@ public class SteelGolem extends IronGolem {
             } else {
                 float f1 = 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F;
                 this.playSound(SoundEvents.IRON_GOLEM_REPAIR, 1.0F, f1);
-                this.gameEvent(GameEvent.MOB_INTERACT, this.eyeBlockPosition());
                 if (!p_28861_.getAbilities().instabuild) {
                     itemstack.shrink(1);
                 }
 
-                return InteractionResult.sidedSuccess(this.level.isClientSide);
+                return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
         }
     }

@@ -5,7 +5,6 @@ import com.trbz_.simplysteel.inventory.SteelAnvilMenu;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -23,7 +22,7 @@ import java.util.Random;
 
 public class SteelAnvilBlock extends AnvilBlock {
 
-    private static final Component CONTAINER_TITLE = new TranslatableComponent("container.repair");
+    private static final Component CONTAINER_TITLE = Component.translatable("container.repair");
 
     public SteelAnvilBlock(BlockBehaviour.Properties props){
         super(props);

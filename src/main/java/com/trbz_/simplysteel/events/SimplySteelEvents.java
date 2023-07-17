@@ -12,16 +12,14 @@ import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
-import net.minecraft.world.level.block.state.predicate.BlockMaterialPredicate;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
-import net.minecraft.world.level.material.Material;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class SimplySteelEvents {
 
     private BlockPattern createSteelGolemFull(){
-        return BlockPatternBuilder.start().aisle("~^~", "###", "~#~").where('^', BlockInWorld.hasState(CarvedPumpkinBlock.PUMPKINS_PREDICATE)).where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(RegistryHandler.STEEL_BLOCK.get()))).where('~', BlockInWorld.hasState(BlockMaterialPredicate.forMaterial(Material.AIR))).build();
+        return BlockPatternBuilder.start().aisle("~^~", "###", "~#~").where('^', BlockInWorld.hasState(CarvedPumpkinBlock.PUMPKINS_PREDICATE)).where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(RegistryHandler.STEEL_BLOCK.get()))).where('~', (p_284868_) -> p_284868_.getState().isAir()).build();
     }
 
     @SubscribeEvent
@@ -29,7 +27,7 @@ public class SimplySteelEvents {
         Block block = event.getPlacedBlock().getBlock();
         if(block instanceof CarvedPumpkinBlock){
             BlockPos blockpos = event.getPos();
-            Level level = event.getEntity().level;
+            Level level = event.getEntity().level();
             BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = createSteelGolemFull().find(level, blockpos);
             if(blockpattern$blockpatternmatch != null){
                 for(int j = 0; j < createSteelGolemFull().getWidth(); ++j) {

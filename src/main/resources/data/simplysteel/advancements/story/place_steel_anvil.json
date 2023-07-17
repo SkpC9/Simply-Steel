@@ -19,10 +19,16 @@
     "anvil": {
       "trigger": "minecraft:placed_block",
       "conditions": {
-        "block": "simplysteel:steel_anvil",
-        "item": {
-          "items": ["simplysteel:steel_anvil"]
-        }
+        "location": [
+          {
+            "block": "simplysteel:steel_anvil",
+            "item": {
+              "items": [
+                "simplysteel:steel_anvil"
+              ]
+            }
+          }
+        ]
       }
     }
   },
