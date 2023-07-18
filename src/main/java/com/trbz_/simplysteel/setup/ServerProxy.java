@@ -1,7 +1,6 @@
 package com.trbz_.simplysteel.setup;
 
 import com.trbz_.simplysteel.SimplySteel;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
@@ -13,8 +12,8 @@ public class ServerProxy implements IProxy {
 
     }
 
-    @Override
-    public ClientLevel getClientWorld() {
-        throw new IllegalStateException("Cannot be run on server!");
-    }
+//    @Override
+//    public ClientLevel getClientWorld() {
+//        throw new IllegalStateException("Cannot be run on server!");
+//    }
 }

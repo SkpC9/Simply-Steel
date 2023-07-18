@@ -8,7 +8,6 @@ public interface IProxy {
 
     void init();
 
-    ClientLevel getClientWorld();
-
+//    ClientLevel getClientWorld();
 
 }
