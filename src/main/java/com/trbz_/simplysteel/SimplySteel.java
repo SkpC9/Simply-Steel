@@ -60,8 +60,9 @@ public class SimplySteel {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 
-        ItemBlockRenderTypes.setRenderLayer(RegistryHandler.STEEL_BARS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(RegistryHandler.STEEL_DOOR.get(), RenderType.translucent());
+//        deprecated
+//        ItemBlockRenderTypes.setRenderLayer(RegistryHandler.STEEL_BARS.get(), RenderType.translucent());
+//        ItemBlockRenderTypes.setRenderLayer(RegistryHandler.STEEL_DOOR.get(), RenderType.translucent());
 
     }
 }

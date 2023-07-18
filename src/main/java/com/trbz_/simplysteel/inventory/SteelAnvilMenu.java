@@ -4,9 +4,9 @@ import com.trbz_.simplysteel.blocks.SteelAnvilBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.AnvilMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class SteelAnvilMenu extends AnvilMenu {

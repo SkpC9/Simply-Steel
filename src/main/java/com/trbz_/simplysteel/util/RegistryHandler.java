@@ -92,7 +92,7 @@ public class RegistryHandler {
             .sound(SoundType.ANVIL)));
 
     private static Boolean neverAllowSpawn(BlockState state, BlockGetter reader, BlockPos pos, EntityType<?> entity) {
-        return (boolean) false;
+        return false;
     }
 
     //Tools
@@ -128,7 +128,7 @@ public class RegistryHandler {
     //Entities
 
     public static final RegistryObject<EntityType<FallingSteelAnvil>> FALLING_ANVIL = ENTITIES.register("falling_anvil", () -> EntityType.Builder.<FallingSteelAnvil>of(FallingSteelAnvil::new, MobCategory.MISC).sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(20).build(new ResourceLocation(SimplySteel.MOD_ID + ":falling_anvil").toString()));
-    public static final RegistryObject<EntityType<SteelGolem>> STEEL_GOLEM = ENTITIES.register("steel_golem", () -> EntityType.Builder.<SteelGolem>of(SteelGolem::new, MobCategory.MISC).sized(1.4F, 2.7F).clientTrackingRange(10).build(new ResourceLocation(SimplySteel.MOD_ID + ":steel_golem").toString()));
+    public static final RegistryObject<EntityType<SteelGolem>> STEEL_GOLEM = ENTITIES.register("steel_golem", () -> EntityType.Builder.of(SteelGolem::new, MobCategory.MISC).sized(1.4F, 2.7F).clientTrackingRange(10).build(new ResourceLocation(SimplySteel.MOD_ID + ":steel_golem").toString()));
 
 
 }

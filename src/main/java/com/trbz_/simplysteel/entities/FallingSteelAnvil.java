@@ -1,8 +1,5 @@
 package com.trbz_.simplysteel.entities;
 
-import java.util.function.Predicate;
-
-import com.trbz_.simplysteel.blocks.SteelAnvilBlock;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
@@ -12,9 +9,13 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Fallable;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.function.Predicate;
 
 public class FallingSteelAnvil extends FallingBlockEntity {
     private float breakChanceMultiplier = 1.0f;
@@ -53,9 +54,7 @@ public class FallingSteelAnvil extends FallingBlockEntity {
 
             DamageSource damagesource = damagesource1;
             float f = (float)Math.min(Mth.floor((float)i * this.fallDamagePerDistance), this.fallDamageMax);
-            this.level().getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> {
-                p_149649_.hurt(damagesource, f);
-            });
+            this.level().getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> p_149649_.hurt(damagesource, f));
             boolean flag = this.blockState.is(BlockTags.ANVIL);
             // breakChanceMultiplier is 0.5f in SteelAnvilBlock
             if (flag && f > 0.0F && this.random.nextFloat() < (0.05F + (float)i * 0.05F) * breakChanceMultiplier) {

@@ -8,12 +8,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -30,9 +27,7 @@ public class SteelAnvilBlock extends AnvilBlock {
 
     @Nullable
     public MenuProvider getMenuProvider(BlockState p_48821_, Level p_48822_, BlockPos p_48823_) {
-        return new SimpleMenuProvider((p_48785_, p_48786_, p_48787_) -> {
-            return new SteelAnvilMenu(p_48785_, p_48786_, ContainerLevelAccess.create(p_48822_, p_48823_), 0.5f);
-        }, CONTAINER_TITLE);
+        return new SimpleMenuProvider((p_48785_, p_48786_, p_48787_) -> new SteelAnvilMenu(p_48785_, p_48786_, ContainerLevelAccess.create(p_48822_, p_48823_), 0.5f), CONTAINER_TITLE);
     }
 
     @Nullable

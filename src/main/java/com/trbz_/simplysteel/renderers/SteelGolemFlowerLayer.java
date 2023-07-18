@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.level.block.Blocks;
 
 public class SteelGolemFlowerLayer extends RenderLayer<SteelGolem, IronGolemModel<SteelGolem>> {
