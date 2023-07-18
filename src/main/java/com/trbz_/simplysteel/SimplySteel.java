@@ -7,8 +7,6 @@ import com.trbz_.simplysteel.setup.ClientProxy;
 import com.trbz_.simplysteel.setup.IProxy;
 import com.trbz_.simplysteel.setup.ServerProxy;
 import com.trbz_.simplysteel.util.RegistryHandler;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -56,7 +56,7 @@ public class SteelGolem extends IronGolem {
 
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_FLAGS_ID, (byte)0);
+        this.entityData.define(DATA_FLAGS_ID, (byte) 0);
     }
 
     public boolean isPlayerCreated() {
@@ -66,9 +66,9 @@ public class SteelGolem extends IronGolem {
     public void setPlayerCreated(boolean p_28888_) {
         byte b0 = this.entityData.get(DATA_FLAGS_ID);
         if (p_28888_) {
-            this.entityData.set(DATA_FLAGS_ID, (byte)(b0 | 1));
+            this.entityData.set(DATA_FLAGS_ID, (byte) (b0 | 1));
         } else {
-            this.entityData.set(DATA_FLAGS_ID, (byte)(b0 & -2));
+            this.entityData.set(DATA_FLAGS_ID, (byte) (b0 & -2));
         }
 
     }

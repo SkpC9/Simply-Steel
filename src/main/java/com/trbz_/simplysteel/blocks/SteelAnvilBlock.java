@@ -4,8 +4,10 @@ import com.trbz_.simplysteel.entities.FallingSteelAnvil;
 import com.trbz_.simplysteel.inventory.SteelAnvilMenu;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -15,14 +17,14 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class SteelAnvilBlock extends AnvilBlock {
 
     private static final Component CONTAINER_TITLE = Component.translatable("container.repair");
 
-    public SteelAnvilBlock(BlockBehaviour.Properties props){
+    public SteelAnvilBlock(BlockBehaviour.Properties props) {
         super(props);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Nullable
@@ -39,11 +41,11 @@ public class SteelAnvilBlock extends AnvilBlock {
         }
     }
 
-    public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, Random random) {
-        if (isFree(serverLevel.getBlockState(blockPos.below())) && blockPos.getY() >= 0) {
-            FallingSteelAnvil fallingsteelanvil = new FallingSteelAnvil(serverLevel, (double)blockPos.getX() + 0.5D, (double)blockPos.getY(), (double)blockPos.getZ() + 0.5D, serverLevel.getBlockState(blockPos), 0.5f);
+    @Override
+    public void tick(BlockState p_221124_, ServerLevel p_221125_, BlockPos p_221126_, RandomSource p_221127_) {
+        if (isFree(p_221125_.getBlockState(p_221126_.below())) && p_221126_.getY() >= p_221125_.getMinBuildHeight()) {
+            FallingSteelAnvil fallingsteelanvil = FallingSteelAnvil.fall(p_221125_, p_221126_, p_221124_);
             this.falling(fallingsteelanvil);
-            serverLevel.addFreshEntity(fallingsteelanvil);
         }
     }
 }

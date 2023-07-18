@@ -18,7 +18,7 @@ public enum SteelItemTier implements Tier {
     private final int enchantability;
     private final Supplier<Ingredient> repairMaterial;
 
-    private SteelItemTier(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
+    SteelItemTier(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
         this.harvestLevel = harvestLevelIn;
         this.maxUses = maxUsesIn;
         this.efficiency = efficiencyIn;
@@ -28,20 +28,32 @@ public enum SteelItemTier implements Tier {
     }
 
     @Override
-    public int getUses() { return this.maxUses; }
+    public int getUses() {
+        return this.maxUses;
+    }
 
     @Override
-    public float getSpeed() { return this.efficiency; }
+    public float getSpeed() {
+        return this.efficiency;
+    }
 
     @Override
-    public float getAttackDamageBonus() { return this.attackDamage; }
+    public float getAttackDamageBonus() {
+        return this.attackDamage;
+    }
 
     @Override
-    public int getLevel() { return this.harvestLevel; }
+    public int getLevel() {
+        return this.harvestLevel;
+    }
 
     @Override
-    public int getEnchantmentValue() { return this.enchantability; }
+    public int getEnchantmentValue() {
+        return this.enchantability;
+    }
 
     @Override
-    public Ingredient getRepairIngredient() { return this.repairMaterial.get(); }
+    public Ingredient getRepairIngredient() {
+        return this.repairMaterial.get();
+    }
 }

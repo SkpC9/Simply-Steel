@@ -23,71 +23,71 @@ import java.util.Random;
 
 public class RNGFlintAndSteelItem extends Item {
 
-   float successChance;
+    float successChance;
 
-   public RNGFlintAndSteelItem(Properties builder, float successChanceIn) {
-      super(builder);
-      successChance = successChanceIn;
-   }
+    public RNGFlintAndSteelItem(Properties builder, float successChanceIn) {
+        super(builder);
+        successChance = successChanceIn;
+    }
 
-   /**
-    * Called when this item is used when targetting a Block
-    */
+    /**
+     * Called when this item is used when targetting a Block
+     */
 
-   public InteractionResult useOn(UseOnContext context) {
-      Player player = context.getPlayer();
-      Level level = context.getLevel();
-      BlockPos blockpos = context.getClickedPos();
-      BlockState blockstate = level.getBlockState(blockpos);
-      Random random = new Random();
-      float strikingFloat = random.nextFloat();
-      boolean strikingSuccess = successChance >= strikingFloat;
+    public InteractionResult useOn(UseOnContext context) {
+        Player player = context.getPlayer();
+        Level level = context.getLevel();
+        BlockPos blockpos = context.getClickedPos();
+        BlockState blockstate = level.getBlockState(blockpos);
+        Random random = new Random();
+        float strikingFloat = random.nextFloat();
+        boolean strikingSuccess = successChance >= strikingFloat;
 
-      if (CampfireBlock.canLight(blockstate) || CandleBlock.canLight(blockstate) || CandleCakeBlock.canLight(blockstate)) {
+        if (CampfireBlock.canLight(blockstate) || CandleBlock.canLight(blockstate) || CandleCakeBlock.canLight(blockstate)) {
 
-         level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
-
-         //client just pretends it works until server says something to fix randomness desync
-         if(level.isClientSide()) return InteractionResult.SUCCESS;
-
-         if(strikingSuccess) {
-            level.setBlock(blockpos, blockstate.setValue(BlockStateProperties.LIT, Boolean.TRUE), 11);
-            level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
-         }
-         if (player != null) {
-            context.getItemInHand().hurtAndBreak(1, player, (p_219999_1_) -> {
-               p_219999_1_.broadcastBreakEvent(context.getHand());
-            });
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
-         if (BaseFireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
-
-            level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
+            level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
 
             //client just pretends it works until server says something to fix randomness desync
-            if(level.isClientSide()) return InteractionResult.SUCCESS;
+            if (level.isClientSide()) return InteractionResult.SUCCESS;
 
-            if(strikingSuccess) {
-               BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
-               level.setBlock(blockpos1, blockstate1, 11);
+            if (strikingSuccess) {
+                level.setBlock(blockpos, blockstate.setValue(BlockStateProperties.LIT, Boolean.TRUE), 11);
+                level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
             }
-            ItemStack itemstack = context.getItemInHand();
-            if (player instanceof ServerPlayer) {
-               if(strikingSuccess) {
-                  CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos1, itemstack);
-               }
-               itemstack.hurtAndBreak(1, player, (p_219998_1_) -> {
-                  p_219998_1_.broadcastBreakEvent(context.getHand());
-               });
+            if (player != null) {
+                context.getItemInHand().hurtAndBreak(1, player, (p_219999_1_) -> {
+                    p_219999_1_.broadcastBreakEvent(context.getHand());
+                });
             }
 
             return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.FAIL;
-         }
-      }
-   }
+        } else {
+            BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
+            if (BaseFireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
+
+                level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.2F - 0.4F * strikingFloat);
+
+                //client just pretends it works until server says something to fix randomness desync
+                if (level.isClientSide()) return InteractionResult.SUCCESS;
+
+                if (strikingSuccess) {
+                    BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
+                    level.setBlock(blockpos1, blockstate1, 11);
+                }
+                ItemStack itemstack = context.getItemInHand();
+                if (player instanceof ServerPlayer) {
+                    if (strikingSuccess) {
+                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos1, itemstack);
+                    }
+                    itemstack.hurtAndBreak(1, player, (p_219998_1_) -> {
+                        p_219998_1_.broadcastBreakEvent(context.getHand());
+                    });
+                }
+
+                return InteractionResult.SUCCESS;
+            } else {
+                return InteractionResult.FAIL;
+            }
+        }
+    }
 }
