@@ -56,6 +56,11 @@ Changelog
 - Updated to forge 1.20.1
 - Fixed some tags
 
+**2.2.2**
+
+- Fixed dedicated server crash when this mod is added
+- Fixed steel anvil falling and damage issues
+
 </details>
 
 Others
