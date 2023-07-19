@@ -2,22 +2,22 @@ package com.trbz_.simplysteel.util;
 
 import com.trbz_.simplysteel.SimplySteel;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.CreativeModeTabEvent.BuildContents;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = SimplySteel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CreativeTabHandler {
     @SubscribeEvent
-    public static void buildContents(BuildCreativeModeTabContentsEvent event) {
+    public static void buildContents(BuildContents event) {
 
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
             event.accept(RegistryHandler.STEEL_INGOT.get());
             event.accept(RegistryHandler.CRUDE_IRON.get());
             event.accept(RegistryHandler.STEEL_NUGGET.get());
         }
 
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+        if (event.getTab() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(RegistryHandler.STEEL_SHOVEL.get());
             event.accept(RegistryHandler.STEEL_PICKAXE.get());
             event.accept(RegistryHandler.STEEL_AXE.get());
@@ -27,7 +27,7 @@ public class CreativeTabHandler {
             event.accept(RegistryHandler.QUARTZ_AND_IRON.get());
         }
 
-        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+        if (event.getTab() == CreativeModeTabs.COMBAT) {
             event.accept(RegistryHandler.STEEL_SWORD.get());
             event.accept(RegistryHandler.STEEL_HELMET.get());
             event.accept(RegistryHandler.STEEL_CHESTPLATE.get());
@@ -35,19 +35,19 @@ public class CreativeTabHandler {
             event.accept(RegistryHandler.STEEL_BOOTS.get());
         }
 
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+        if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(RegistryHandler.STEEL_BLOCK_ITEM.get());
             event.accept(RegistryHandler.STEEL_BARS_ITEM.get());
             event.accept(RegistryHandler.STEEL_DOOR_ITEM.get());
             event.accept(RegistryHandler.STEEL_TRAPDOOR_ITEM.get());
         }
 
-        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
+        if (event.getTab() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(RegistryHandler.STEEL_DOOR_ITEM.get());
             event.accept(RegistryHandler.STEEL_TRAPDOOR_ITEM.get());
         }
 
-        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+        if (event.getTab() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(RegistryHandler.STEEL_ANVIL_ITEM.get());
             event.accept(RegistryHandler.CHIPPED_STEEL_ANVIL_ITEM.get());
             event.accept(RegistryHandler.DAMAGED_STEEL_ANVIL_ITEM.get());

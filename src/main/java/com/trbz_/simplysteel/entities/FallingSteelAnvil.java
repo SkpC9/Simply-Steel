@@ -63,7 +63,7 @@ public class FallingSteelAnvil extends FallingBlockEntity {
 
             DamageSource damagesource = damagesource1;
             float f = (float) Math.min(Mth.floor((float) i * this.fallDamagePerDistance), this.fallDamageMax);
-            this.level().getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> p_149649_.hurt(damagesource, f));
+            this.getLevel().getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> p_149649_.hurt(damagesource, f));
             boolean flag = this.blockState.is(BlockTags.ANVIL);
             // breakChanceMultiplier is 0.5f
             if (flag && f > 0.0F && this.random.nextFloat() < (0.05F + (float) i * 0.05F) * breakChanceMultiplier) {

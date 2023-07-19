@@ -49,7 +49,7 @@ public class SteelGolem extends IronGolem {
                     itemstack.shrink(1);
                 }
 
-                return InteractionResult.sidedSuccess(this.level().isClientSide);
+                return InteractionResult.sidedSuccess(this.getLevel().isClientSide);
             }
         }
     }

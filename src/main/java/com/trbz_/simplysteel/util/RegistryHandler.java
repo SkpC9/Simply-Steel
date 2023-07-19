@@ -17,7 +17,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -46,27 +47,27 @@ public class RegistryHandler {
     //Blocks
 
     public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new Block(Block.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.METAL)
             .strength(7.0F, 10.0F)
             .sound(SoundType.METAL)
             .requiresCorrectToolForDrops()));
 
     public static final RegistryObject<IronBarsBlock> STEEL_BARS = BLOCKS.register("steel_bars", () -> new IronBarsBlock(BlockBehaviour.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.METAL, MaterialColor.NONE)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 10.0F)
             .sound(SoundType.METAL)
             .noOcclusion()));
 
     public static final net.minecraftforge.registries.RegistryObject<DoorBlock> STEEL_DOOR = BLOCKS.register("steel_door", () -> new DoorBlock(BlockBehaviour.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.METAL, MaterialColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 10.0F)
             .sound(SoundType.METAL)
             .noOcclusion(), BlockSetType.IRON));
 
     public static final RegistryObject<TrapDoorBlock> STEEL_TRAPDOOR = BLOCKS.register("steel_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 10.0F)
             .sound(SoundType.METAL)
@@ -74,19 +75,19 @@ public class RegistryHandler {
             .isValidSpawn(RegistryHandler::neverAllowSpawn), BlockSetType.IRON));
 
     public static final RegistryObject<SteelAnvilBlock> STEEL_ANVIL = BLOCKS.register("steel_anvil", () -> new SteelAnvilBlock(BlockBehaviour.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.HEAVY_METAL, MaterialColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 2000.0F)
             .sound(SoundType.ANVIL)));
 
     public static final RegistryObject<SteelAnvilBlock> CHIPPED_STEEL_ANVIL = BLOCKS.register("chipped_steel_anvil", () -> new SteelAnvilBlock(BlockBehaviour.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.HEAVY_METAL, MaterialColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 2000.0F)
             .sound(SoundType.ANVIL)));
 
     public static final RegistryObject<SteelAnvilBlock> DAMAGED_STEEL_ANVIL = BLOCKS.register("damaged_steel_anvil", () -> new SteelAnvilBlock(BlockBehaviour.Properties
-            .of().mapColor(MapColor.METAL)
+            .of(Material.HEAVY_METAL, MaterialColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 2000.0F)
             .sound(SoundType.ANVIL)));

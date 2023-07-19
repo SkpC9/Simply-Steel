@@ -27,7 +27,7 @@ public class SimplySteelEvents {
         Block block = event.getPlacedBlock().getBlock();
         if (block instanceof CarvedPumpkinBlock) {
             BlockPos blockpos = event.getPos();
-            Level level = event.getEntity().level();
+            Level level = event.getEntity().getLevel();
             BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = createSteelGolemFull().find(level, blockpos);
             if (blockpattern$blockpatternmatch != null) {
                 for (int j = 0; j < createSteelGolemFull().getWidth(); ++j) {
