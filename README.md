@@ -1,3 +1,9 @@
+[![](https://cf.way2muchnoise.eu/versions/890092.svg)](https://www.curseforge.com/minecraft/mc-mods/simply-steel-continued)
+
+Download at Curseforge: [![](https://cf.way2muchnoise.eu/full_890092_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/simply-steel-continued)
+
+Download at Modrinth: [![](https://img.shields.io/modrinth/dt/iWzswank?logo=modrinth)](https://modrinth.com/mod/simply-steel-continued)
+
 Summary
 -
 
