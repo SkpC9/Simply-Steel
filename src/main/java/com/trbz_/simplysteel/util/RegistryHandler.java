@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -40,8 +41,8 @@ public class RegistryHandler {
     //Items
 
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties()));
-    public static final net.minecraftforge.registries.RegistryObject<Item> CRUDE_IRON = ITEMS.register("crude_iron", () -> new Item(new Item.Properties()));
-    public static final net.minecraftforge.registries.RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CRUDE_IRON = ITEMS.register("crude_iron", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties()));
 
     //Blocks
 
@@ -77,19 +78,22 @@ public class RegistryHandler {
             .of().mapColor(MapColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 2000.0F)
-            .sound(SoundType.ANVIL)));
+            .sound(SoundType.ANVIL)
+            .pushReaction(PushReaction.BLOCK)));
 
     public static final RegistryObject<SteelAnvilBlock> CHIPPED_STEEL_ANVIL = BLOCKS.register("chipped_steel_anvil", () -> new SteelAnvilBlock(BlockBehaviour.Properties
             .of().mapColor(MapColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 2000.0F)
-            .sound(SoundType.ANVIL)));
+            .sound(SoundType.ANVIL)
+            .pushReaction(PushReaction.BLOCK)));
 
     public static final RegistryObject<SteelAnvilBlock> DAMAGED_STEEL_ANVIL = BLOCKS.register("damaged_steel_anvil", () -> new SteelAnvilBlock(BlockBehaviour.Properties
             .of().mapColor(MapColor.METAL)
             .requiresCorrectToolForDrops()
             .strength(7.0F, 2000.0F)
-            .sound(SoundType.ANVIL)));
+            .sound(SoundType.ANVIL)
+            .pushReaction(PushReaction.BLOCK)));
 
     private static Boolean neverAllowSpawn(BlockState state, BlockGetter reader, BlockPos pos, EntityType<?> entity) {
         return false;
