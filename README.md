@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/SkpC9/Simply-Steel/main/images/simplysteellogowide.png)
+
 [![](https://cf.way2muchnoise.eu/versions/890092.svg)](https://www.curseforge.com/minecraft/mc-mods/simply-steel-continued)
 
 Download at Curseforge: [![](https://cf.way2muchnoise.eu/full_890092_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/simply-steel-continued)

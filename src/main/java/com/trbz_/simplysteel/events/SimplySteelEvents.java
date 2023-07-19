@@ -30,6 +30,7 @@ public class SimplySteelEvents {
             Level level = event.getEntity().level();
             BlockPattern.BlockPatternMatch blockpattern$blockpatternmatch = createSteelGolemFull().find(level, blockpos);
             if (blockpattern$blockpatternmatch != null) {
+                // clearPatternBlocks in CarvedPumpkinBlock.java
                 for (int j = 0; j < createSteelGolemFull().getWidth(); ++j) {
                     for (int k = 0; k < createSteelGolemFull().getHeight(); ++k) {
                         BlockInWorld blockinworld = blockpattern$blockpatternmatch.getBlock(j, k, 0);
@@ -47,6 +48,7 @@ public class SimplySteelEvents {
                     CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayer1, steelgolem);
                 }
 
+                // updatePatternBlocks in CarvedPumpkinBlock.java
                 for (int i1 = 0; i1 < createSteelGolemFull().getWidth(); ++i1) {
                     for (int j1 = 0; j1 < createSteelGolemFull().getHeight(); ++j1) {
                         BlockInWorld blockinworld = blockpattern$blockpatternmatch.getBlock(i1, j1, 0);
