@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Fallable;
 import net.minecraft.world.level.block.state.BlockState;
@@ -52,21 +53,23 @@ public class FallingSteelAnvil extends FallingBlockEntity {
         if (i < 0) {
             return false;
         } else {
-            Predicate<Entity> predicate = EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-            Block $$8 = this.blockState.getBlock();
-            DamageSource damagesource1;
-            if ($$8 instanceof Fallable fallable) {
-                damagesource1 = fallable.getFallDamageSource(this);
+            Predicate<Entity> predicate;
+            DamageSource damagesource;
+            if (this.blockState.getBlock() instanceof Fallable) {
+                Fallable fallable = (Fallable)this.blockState.getBlock();
+                predicate = fallable.getHurtsEntitySelector();
+                damagesource = fallable.getFallDamageSource();
             } else {
-                damagesource1 = this.damageSources().fallingBlock(this);
+                predicate = EntitySelector.NO_SPECTATORS;
+                damagesource = DamageSource.FALLING_BLOCK;
             }
 
-            DamageSource damagesource = damagesource1;
-            float f = (float) Math.min(Mth.floor((float) i * this.fallDamagePerDistance), this.fallDamageMax);
-            this.getLevel().getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> p_149649_.hurt(damagesource, f));
+            float f = (float)Math.min(Mth.floor((float)i * this.fallDamagePerDistance), this.fallDamageMax);
+            this.level.getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> {
+                p_149649_.hurt(damagesource, f);
+            });
             boolean flag = this.blockState.is(BlockTags.ANVIL);
-            // breakChanceMultiplier is 0.5f
-            if (flag && f > 0.0F && this.random.nextFloat() < (0.05F + (float) i * 0.05F) * breakChanceMultiplier) {
+            if (flag && f > 0.0F && this.random.nextFloat() < (0.05F + (float)i * 0.05F) * breakChanceMultiplier) {
                 BlockState blockstate = SteelAnvilBlock.damage(this.blockState);
                 if (blockstate == null) {
                     this.cancelDrop = true;
