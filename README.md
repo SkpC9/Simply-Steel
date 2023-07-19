@@ -43,6 +43,12 @@ Features
   - Real Steel -> Summon a Steel Golem to help defend a village
   - Watch the World Burn -> Completely use up every firestarter, then reevaluate your sanity
 
+Images
+-
+
+![items and blocks](https://raw.githubusercontent.com/SkpC9/Simply-Steel/main/images/items%20and%20blocks.png)
+
+![steel golem](https://raw.githubusercontent.com/SkpC9/Simply-Steel/main/images/steel%20golem.png)
 
 Changelog
 -
@@ -66,6 +72,12 @@ Changelog
 Others
 -
 
-Credits:
+**Credits**:
 
-- trbz_ (original author)
+- [trbz_](https://legacy.curseforge.com/members/trbz_/projects) (original author)
+
+
+**Permission from original author**:
+
+![Permission from original author](https://raw.githubusercontent.com/SkpC9/Simply-Steel/main/images/permission%20from%20original%20author.png)
+
