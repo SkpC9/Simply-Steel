@@ -51,6 +51,13 @@ Features
   - Real Steel -> Summon a Steel Golem to help defend a village
   - Watch the World Burn -> Completely use up every firestarter, then reevaluate your sanity
 
+**Configuration**
+
+- Configuration file is located at "config/simplysteel.txt". You need to run the game once to generate it.
+- Nearly everything is configurable, durability, weapon damage, harvest level and more! Check the config file for more information.
+- Note: Please **restart** minecraft to apply changes in config
+- If you play on dedicated server, please note that server and client's config should be the same.
+
 Images
 -
 
@@ -74,6 +81,11 @@ Changelog
 
 - Fixed dedicated server crash when this mod is added
 - Fixed steel anvil falling and damage issues
+
+**2.2.3**
+
+- Added steel shears, more durability than regular shears
+- Added configurations, nearly everything in this mod is now configurable!
 
 </details>
 

@@ -30,21 +30,20 @@ public class SimplySteel {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "simplysteel";
-    public static final Path CONFIG_PATH = FMLPaths.CONFIGDIR.get().resolve("musketmod.txt");
+    public static final Path CONFIG_PATH = FMLPaths.CONFIGDIR.get().resolve("simplysteel.txt");
     private static IProxy proxy;
 
     public static int max_durability;
 
     public SimplySteel() {
-        max_durability=500;
+        // load custom config for register
+        ConfigHandler.reload();
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER,ConfigHandler.SERVER_SPEC);
 
         RegistryHandler.init();
 
