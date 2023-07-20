@@ -1,5 +1,7 @@
 package com.trbz_.simplysteel.tools;
 
+import com.trbz_.simplysteel.SimplySteel;
+import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -7,7 +9,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum SteelItemTier implements Tier {
-    STEEL(2, 484, 6.5F, 2.0F, 16, () -> {
+    STEEL(ConfigHandler.steel_item_harvest_level, SimplySteel.max_durability, ConfigHandler.steel_item_efficiency, 2.0F, ConfigHandler.steel_item_enchantability, () -> {
         return Ingredient.of(RegistryHandler.STEEL_INGOT.get());
     });
 

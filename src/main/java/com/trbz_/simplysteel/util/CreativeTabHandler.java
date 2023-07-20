@@ -25,6 +25,7 @@ public class CreativeTabHandler {
             event.accept(RegistryHandler.QUARTZ_AND_STEEL.get());
             event.accept(RegistryHandler.FLINT_AND_IRON.get());
             event.accept(RegistryHandler.QUARTZ_AND_IRON.get());
+            event.accept(RegistryHandler.STEEL_SHEARS.get());
         }
 
         if (event.getTab() == CreativeModeTabs.COMBAT) {
