@@ -1,5 +1,6 @@
 package com.trbz_.simplysteel.entities;
 
+import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -30,7 +31,7 @@ public class SteelGolem extends IronGolem {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 150.0D).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 15.0D).add(Attributes.ARMOR_TOUGHNESS, 4.0D);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, ConfigHandler.steel_golem_max_health).add(Attributes.MOVEMENT_SPEED, ConfigHandler.steel_golem_movement_speed).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, ConfigHandler.steel_golem_attack_damage).add(Attributes.ARMOR_TOUGHNESS, 4.0D);
     }
 
     protected InteractionResult mobInteract(Player p_28861_, InteractionHand p_28862_) {
@@ -39,7 +40,7 @@ public class SteelGolem extends IronGolem {
             return InteractionResult.PASS;
         } else {
             float f = this.getHealth();
-            this.heal(37.5F);
+            this.heal(ConfigHandler.steel_golem_use_ingot_heal);
             if (this.getHealth() == f) {
                 return InteractionResult.PASS;
             } else {

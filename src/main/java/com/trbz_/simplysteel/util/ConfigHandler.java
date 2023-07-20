@@ -1,74 +1,26 @@
+// config method based on https://github.com/ewewukek/mc-musketmod/
 package com.trbz_.simplysteel.util;
 
-
 import com.trbz_.simplysteel.SimplySteel;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 
-@Mod.EventBusSubscriber(modid = SimplySteel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.util.Locale;
+import java.util.Scanner;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.maven.artifact.versioning.ComparableVersion;
+
 public class ConfigHandler {
-
-    public static final ForgeConfigSpec SERVER_SPEC;
-
-    static{
-        ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-        setupConfig(BUILDER);
-        SERVER_SPEC= BUILDER.build();
-    }
-
-    private static ForgeConfigSpec.IntValue STEEL_ITEM_HARVEST_LEVEL;
-    private static ForgeConfigSpec.IntValue STEEL_ITEM_DURABILITY;
-    private static ForgeConfigSpec.DoubleValue STEEL_ITEM_EFFICIENCY;
-    private static ForgeConfigSpec.IntValue STEEL_ITEM_ENCHANTABILITY;
-    private static ForgeConfigSpec.IntValue STEEL_SWORD_DAMAGE;
-    private static ForgeConfigSpec.DoubleValue STEEL_SWORD_ATTACK_SPEED;
-    private static ForgeConfigSpec.DoubleValue STEEL_AXE_DAMAGE;
-    private static ForgeConfigSpec.DoubleValue STEEL_AXE_ATTACK_SPEED;
-    private static ForgeConfigSpec.IntValue STEEL_SHEARS_DURABILITY;
-
-    private static void setupConfig(ForgeConfigSpec.Builder builder) {
-        builder.push("Steel Tools And Weapons");
-
-        STEEL_ITEM_HARVEST_LEVEL= builder
-                .comment("Wood:0 Stone:1 Iron:2 Diamond:3 Netherite:4")
-                .defineInRange("steel_item_harvest_level", 2, 0, 4);
-
-        STEEL_ITEM_DURABILITY = builder
-                .defineInRange("steel_item_durability", 484, 1, 10000);
-        STEEL_ITEM_EFFICIENCY = builder
-                .comment("Wood:2 Stone:4 Iron:6 Diamond:8 Netherite:9 Gold:12")
-                .defineInRange("steel_item_efficiency", 6.5D, 1D, 100D);
-        STEEL_ITEM_ENCHANTABILITY = builder
-                .comment("Wood:15 Stone:5 Iron:14 Diamond:10 Netherite:15 Gold:22")
-                .defineInRange("steel_item_enchantability", 16, 1, 100);
-
-        STEEL_SWORD_DAMAGE = builder
-                .defineInRange("steel_sword_damage", 6, 1, 1000);
-
-        STEEL_SWORD_ATTACK_SPEED = builder
-                .defineInRange("steel_sword_attack_speed", 1.6D, 0.1D, 4D);
-        STEEL_AXE_DAMAGE = builder
-                .defineInRange("steel_axe_damage", 9D, 1D, 1000D);
-
-        STEEL_AXE_ATTACK_SPEED = builder
-                .defineInRange("steel_axe_attack_speed", 0.9D, 0.1D, 4D);
-
-        builder.push("FireStarters");
-
-
-        builder.pop();
-
-        builder.push("Steel Shears");
-        STEEL_SHEARS_DURABILITY = builder
-                .defineInRange("steel_shears_durability", 460, 1, 10000);;
-
-        builder.pop();
-
-        builder.pop();
-    }
-
+    private static final Logger logger = LogManager.getLogger(SimplySteel.class);
+    public static final ConfigHandler INSTANCE = new ConfigHandler();
+//    public static final String VERSION = "${mod_version}";
+    public static final ComparableVersion VERSION = new ComparableVersion("2.2.2");
+    // values exposed to other classes
     public static int steel_item_harvest_level;
     public static int steel_item_durability;
     public static float steel_item_efficiency;
@@ -78,18 +30,205 @@ public class ConfigHandler {
     public static float steel_axe_damage;
     public static float steel_axe_attack_speed;
     public static int steel_shears_durability;
+    public static int quartz_and_steel_durability;
+    public static double steel_golem_max_health;
+    public static double steel_golem_attack_damage;
+    public static float steel_golem_use_ingot_heal;
 
-    @SubscribeEvent
-    static void onLoad(final ModConfigEvent event)
-    {
-        steel_item_harvest_level = STEEL_ITEM_HARVEST_LEVEL.get();
-        steel_item_durability = STEEL_ITEM_DURABILITY.get();
-        steel_item_efficiency = STEEL_ITEM_EFFICIENCY.get().floatValue();
-        steel_item_enchantability = STEEL_ITEM_ENCHANTABILITY.get();
-        steel_sword_damage = STEEL_SWORD_DAMAGE.get();
-        steel_sword_attack_speed = STEEL_SWORD_ATTACK_SPEED.get().floatValue();
-        steel_axe_damage = STEEL_AXE_DAMAGE.get().floatValue();
-        steel_axe_attack_speed = STEEL_AXE_ATTACK_SPEED.get().floatValue();
-        steel_shears_durability = STEEL_SHEARS_DURABILITY.get();
+    public static double steel_golem_movement_speed;
+
+
+    public static void reload() {
+        INSTANCE.setDefaults();
+        INSTANCE.load();
+
+        logger.info("Configuration has been loaded");
+    }
+
+    private void setDefaults() {
+        steel_item_harvest_level = 2;
+
+        steel_item_durability = 484;
+        steel_item_efficiency = 6.5F;
+        steel_item_enchantability = 16;
+        steel_sword_damage = 6;
+
+        steel_sword_attack_speed = 1.6F;
+        steel_axe_damage = 9F;
+        steel_axe_attack_speed = 0.9F;
+        steel_shears_durability = 460;
+        quartz_and_steel_durability = 88;
+        steel_golem_max_health = 150;
+        steel_golem_attack_damage = 15;
+        steel_golem_use_ingot_heal = 37.5F;
+        steel_golem_movement_speed = 0.25;
+    }
+
+    private void load() {
+//        String version = "0";
+        ComparableVersion version = new ComparableVersion("0");
+        try (BufferedReader reader = Files.newBufferedReader(SimplySteel.CONFIG_PATH)) {
+            String line;
+            int lineNumber = 0;
+            while ((line = reader.readLine()) != null) {
+                lineNumber++;
+
+                // to ignore comments
+                int commentStart = line.indexOf('#');
+                if (commentStart != -1) line = line.substring(0, commentStart);
+                commentStart = line.indexOf('[');
+                if (commentStart != -1) line = line.substring(0, commentStart);
+
+                line.trim();
+                if (line.length() == 0) continue;
+
+                String errorPrefix = SimplySteel.CONFIG_PATH+": line "+lineNumber+": ";
+                try (Scanner s = new Scanner(line)) {
+                    s.useLocale(Locale.US);
+                    s.useDelimiter("\\s*=\\s*");
+
+                    if (!s.hasNext()) {
+                        logger.warn(errorPrefix+"parameter name is missing");
+                        continue;
+                    }
+                    String key = s.next().trim();
+                    // use string version
+                    if (key.equals("version")){
+                        version.parseVersion(s.next().trim());
+                        continue;
+                    }
+
+                    if (!s.hasNextDouble()) {
+                        logger.warn(errorPrefix+"value is missing/wrong/not a number");
+                        continue;
+                    }
+                    double value = s.nextDouble();
+
+                    switch (key) {
+                        case "steel_item_harvest_level":
+                            steel_item_harvest_level = (int) value;
+                            break;
+                        case "steel_item_durability":
+                            steel_item_durability = (int) value;
+                            break;
+                        case "steel_item_efficiency":
+                            steel_item_efficiency =(float) value;
+                            break;
+                        case "steel_item_enchantability":
+                            steel_item_enchantability = (int) value;
+                            break;
+                        case "steel_sword_damage":
+                            steel_sword_damage = (int) value;
+                            break;
+                        case "steel_sword_attack_speed":
+                            steel_sword_attack_speed = (float) value;
+                            break;
+                        case "steel_axe_damage":
+                            steel_axe_damage =(float) value;
+                            break;
+                        case "steel_axe_attack_speed":
+                            steel_axe_attack_speed = (float) value;
+                            break;
+                        case "steel_shears_durability":
+                            steel_shears_durability = (int) value;
+                            break;
+                        case "quartz_and_steel_durability":
+                            quartz_and_steel_durability = (int) value;
+                            break;
+                        case "steel_golem_max_health":
+                            steel_golem_max_health = value;
+                            break;
+                        case "steel_golem_attack_damage":
+                            steel_golem_attack_damage = value;
+                            break;
+                        case "steel_golem_use_ingot_heal":
+                            steel_golem_use_ingot_heal = (float) value;
+                            break;
+                        case "steel_golem_movement_speed":
+                            steel_golem_movement_speed = value;
+                            break;
+                        default:
+                            logger.warn(errorPrefix+"unrecognized parameter name: "+key);
+                    }
+                }
+            }
+        } catch (NoSuchFileException e) {
+            save();
+            logger.info("Configuration file not found, default created");
+
+        } catch (IOException e) {
+            logger.warn("Could not read configuration file: ", e);
+        }
+        if (version.compareTo(VERSION) < 0) {
+            logger.info("Configuration file belongs to older version, updating");
+            save();
+        }
+    }
+
+    private void save() {
+        try (BufferedWriter writer = Files.newBufferedWriter(SimplySteel.CONFIG_PATH)) {
+            writer.write("version = "+VERSION+"\n");
+            writer.write("# Note: Please restart minecraft to apply changes in config");
+            writer.write("\n");
+            writer.write("\n");
+            writer.write("[Steel Tools And Weapons]\n");
+            writer.write("\n");
+            writer.write("# Wood:0 Stone:1 Iron:2 Diamond:3 Netherite:4\n");
+            writer.write("# Default:2\n");
+            writer.write("steel_item_harvest_level = "+steel_item_harvest_level+"\n");
+            writer.write("\n");
+            writer.write("# Default:484\n");
+            writer.write("steel_item_durability = "+steel_item_durability+"\n");
+            writer.write("\n");
+            writer.write("# Wood:2 Stone:4 Iron:6 Diamond:8 Netherite:9 Gold:12\n");
+            writer.write("# Default:6.5\n");
+            writer.write("steel_item_efficiency = "+steel_item_efficiency+"\n");
+            writer.write("\n");
+            writer.write("# Wood:15 Stone:5 Iron:14 Diamond:10 Netherite:15 Gold:22\n");
+            writer.write("# Default:16\n");
+            writer.write("steel_item_enchantability = "+steel_item_enchantability+"\n");
+            writer.write("\n");
+            writer.write("# Default:6\n");
+            writer.write("steel_sword_damage = "+steel_sword_damage+"\n");
+            writer.write("\n");
+            writer.write("# Default:1.6\n");
+            writer.write("steel_sword_attack_speed = "+steel_sword_attack_speed+"\n");
+            writer.write("\n");
+            writer.write("# Default:9\n");
+            writer.write("steel_axe_damage = "+steel_axe_damage+"\n");
+            writer.write("\n");
+            writer.write("# Default:0.9\n");
+            writer.write("steel_axe_attack_speed = "+steel_axe_attack_speed+"\n");
+            writer.write("\n");
+            writer.write("# Default:460\n");
+            writer.write("steel_shears_durability = "+steel_shears_durability+"\n");
+            writer.write("\n");
+            writer.write("# Default:88\n");
+            writer.write("quartz_and_steel_durability = "+quartz_and_steel_durability+"\n");
+            writer.write("\n");
+            writer.write("\n");
+            writer.write("[Steel Golem]\n");
+            writer.write("\n");
+            writer.write("# Max health is capped at 1024 by minecraft\n");
+            writer.write("# Default:150\n");
+            writer.write("steel_golem_max_health = "+steel_golem_max_health+"\n");
+            writer.write("\n");
+            writer.write("# Default:15\n");
+            writer.write("steel_golem_attack_damage = "+steel_golem_attack_damage+"\n");
+            writer.write("\n");
+            writer.write("# Using steel ingots to steel golem heals it by this value\n");
+            writer.write("# Default:37.5\n");
+            writer.write("steel_golem_use_ingot_heal = "+steel_golem_use_ingot_heal+"\n");
+            writer.write("\n");
+            writer.write("# Movement speed seems only apply to newly created golem after changing config\n");
+            writer.write("# Default:0.25\n");
+            writer.write("steel_golem_movement_speed = "+steel_golem_movement_speed+"\n");
+            writer.write("\n");
+            // todo movespeed bump version to 2.3.2 since changed basics
+            // todo steelarmor
+
+        } catch (IOException e) {
+            logger.warn("Could not save configuration file: ", e);
+        }
     }
 }
