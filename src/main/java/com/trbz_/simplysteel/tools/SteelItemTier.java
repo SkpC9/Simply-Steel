@@ -9,7 +9,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum SteelItemTier implements Tier {
-    STEEL(ConfigHandler.steel_item_harvest_level, SimplySteel.max_durability, ConfigHandler.steel_item_efficiency, 2.0F, ConfigHandler.steel_item_enchantability, () -> {
+    STEEL(ConfigHandler.steel_item_harvest_level, ConfigHandler.steel_item_durability, ConfigHandler.steel_item_efficiency, 2.0F, ConfigHandler.steel_item_enchantability, () -> {
         return Ingredient.of(RegistryHandler.STEEL_INGOT.get());
     });
 
