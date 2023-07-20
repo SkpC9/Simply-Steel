@@ -6,17 +6,23 @@ import com.trbz_.simplysteel.events.SimplySteelEvents;
 import com.trbz_.simplysteel.setup.ClientProxy;
 import com.trbz_.simplysteel.setup.IProxy;
 import com.trbz_.simplysteel.setup.ServerProxy;
+import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.nio.file.Path;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("simplysteel")
@@ -24,15 +30,21 @@ public class SimplySteel {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "simplysteel";
+    public static final Path CONFIG_PATH = FMLPaths.CONFIGDIR.get().resolve("musketmod.txt");
     private static IProxy proxy;
 
+    public static int max_durability;
+
     public SimplySteel() {
+        max_durability=500;
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER,ConfigHandler.SERVER_SPEC);
 
         RegistryHandler.init();
 
