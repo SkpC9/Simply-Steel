@@ -79,6 +79,10 @@ Changelog
 - Added steel shears.
 - Added configurations, Please check the description for more info.
 
+**2.3.1**
+
+- Fixed shears and firestarters added by this mod can not be used by dispenser.
+
 </details>
 
 Others
