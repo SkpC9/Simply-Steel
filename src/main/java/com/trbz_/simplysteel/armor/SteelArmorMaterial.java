@@ -1,6 +1,7 @@
 package com.trbz_.simplysteel.armor;
 
 import com.trbz_.simplysteel.SimplySteel;
+import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -12,7 +13,7 @@ import java.util.function.Supplier;
 
 public enum SteelArmorMaterial implements ArmorMaterial {
 
-    STEEL(SimplySteel.MOD_ID + ":steel", 20, new int[]{2, 5, 6, 2}, 11, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> Ingredient.of(RegistryHandler.STEEL_INGOT.get()));
+    STEEL(SimplySteel.MOD_ID + ":steel", ConfigHandler.steel_armor_maxDamageFactor, new int[]{ConfigHandler.steel_armor_boots_armor, ConfigHandler.steel_armor_leggings_armor, ConfigHandler.steel_armor_chestplate_armor, ConfigHandler.steel_armor_helmet_armor}, ConfigHandler.steel_armor_enchantability, SoundEvents.ARMOR_EQUIP_IRON, ConfigHandler.steel_armor_toughness, ConfigHandler.steel_armor_knockbackResistance, () -> Ingredient.of(RegistryHandler.STEEL_INGOT.get()));
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
     private final String name;
