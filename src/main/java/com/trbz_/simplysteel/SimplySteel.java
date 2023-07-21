@@ -4,10 +4,14 @@ package com.trbz_.simplysteel;
 import com.trbz_.simplysteel.entities.SteelGolem;
 import com.trbz_.simplysteel.events.SimplySteelEvents;
 import com.trbz_.simplysteel.setup.ClientProxy;
+import com.trbz_.simplysteel.setup.DispenserRegister;
 import com.trbz_.simplysteel.setup.IProxy;
 import com.trbz_.simplysteel.setup.ServerProxy;
 import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
+import net.minecraft.core.dispenser.ShearsDispenseItemBehavior;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -60,6 +64,10 @@ public class SimplySteel {
     private void setup(final FMLCommonSetupEvent event) {
 
         proxy.init();
+
+        // register dispenser behavior
+        // not needed for steel armor, only for shears and firestarters
+        DispenserRegister.init();
 
     }
 

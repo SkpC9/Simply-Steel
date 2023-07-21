@@ -89,6 +89,10 @@ Changelog
 - (1.20.1) Fixed steel anvil can be pushed by piston.
 - (1.19) Fixed advancement: place steel anvil won't trigger
 
+**2.3.1**
+
+- Fixed shears and firestarters added by this mod can not be used by dispenser.
+
 </details>
 
 Others
