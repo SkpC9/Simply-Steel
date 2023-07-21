@@ -108,7 +108,7 @@ public class RegistryHandler {
     public static final RegistryObject<RNGFlintAndSteelItem> FLINT_AND_IRON = ITEMS.register("flint_and_iron", () -> new RNGFlintAndSteelItem(new Item.Properties().durability(64).tab(CreativeModeTab.TAB_TOOLS), 0.5F));
     public static final RegistryObject<RNGFlintAndSteelItem> QUARTZ_AND_IRON = ITEMS.register("quartz_and_iron", () -> new RNGFlintAndSteelItem(new Item.Properties().durability(88).tab(CreativeModeTab.TAB_TOOLS), 0.5F));
 
-    public static final RegistryObject<ShearsItem> STEEL_SHEARS = ITEMS.register("steel_shears", () -> new ShearsItem(new Item.Properties().durability(ConfigHandler.steel_shears_durability)));
+    public static final RegistryObject<ShearsItem> STEEL_SHEARS = ITEMS.register("steel_shears", () -> new ShearsItem(new Item.Properties().durability(ConfigHandler.steel_shears_durability).tab(CreativeModeTab.TAB_TOOLS)));
 
     //Armor
 
