@@ -19,12 +19,7 @@
     "anvil": {
       "trigger": "minecraft:placed_block",
       "conditions": {
-        "location": [
-          {
-            "block": "simplysteel:steel_anvil",
-            "condition": "minecraft:block_state_property"
-          }
-        ]
+          "block": "simplysteel:steel_anvil"
       }
     }
   },
