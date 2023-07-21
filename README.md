@@ -87,6 +87,7 @@ Changelog
 - Added steel shears.
 - Added configurations, Please check the description for more info.
 - (1.20.1) Fixed steel anvil can be pushed by piston.
+- (1.19) Fixed advancement: place steel anvil won't trigger
 
 </details>
 
