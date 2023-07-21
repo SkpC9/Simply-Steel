@@ -1,6 +1,5 @@
 package com.trbz_.simplysteel.tools;
 
-import com.trbz_.simplysteel.SimplySteel;
 import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
 import net.minecraft.world.item.Tier;
