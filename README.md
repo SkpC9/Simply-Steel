@@ -92,6 +92,7 @@ Changelog
 **2.3.1**
 
 - Fixed shears and firestarters added by this mod can not be used by dispenser.
+- (1.19.2) Fixed steel shears not appear in creative tools tab.
 
 </details>
 
