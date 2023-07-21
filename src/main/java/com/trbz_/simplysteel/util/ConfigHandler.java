@@ -18,7 +18,7 @@ public class ConfigHandler {
     private static final Logger logger = LogManager.getLogger(SimplySteel.class);
     public static final ConfigHandler INSTANCE = new ConfigHandler();
     //    public static final String VERSION = "${mod_version}";
-    public static final ComparableVersion VERSION = new ComparableVersion("2.3.0");
+    public static final ComparableVersion VERSION = new ComparableVersion("2.3.1");
     // values exposed to other classes
     public static int steel_item_harvest_level;
     public static int steel_item_durability;
