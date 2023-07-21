@@ -82,10 +82,10 @@ Changelog
 - Fixed dedicated server crash when this mod is added
 - Fixed steel anvil falling and damage issues
 
-**2.2.3**
+**2.3.0**
 
-- Added steel shears, more durability than regular shears
-- Added configurations, nearly everything in this mod is now configurable!
+- Added steel shears.
+- Added configurations, Please check the description for more info.
 
 </details>
 

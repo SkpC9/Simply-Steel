@@ -101,10 +101,10 @@ public class RegistryHandler {
 
     //Tools
 
-    public static final RegistryObject<SwordItem> STEEL_SWORD = ITEMS.register("steel_sword", () -> new SwordItem(SteelItemTier.STEEL, ConfigHandler.steel_sword_damage-3, ConfigHandler.steel_sword_attack_speed-4F, new Item.Properties()));
+    public static final RegistryObject<SwordItem> STEEL_SWORD = ITEMS.register("steel_sword", () -> new SwordItem(SteelItemTier.STEEL, ConfigHandler.steel_sword_damage - 3, ConfigHandler.steel_sword_attack_speed - 4F, new Item.Properties()));
     public static final RegistryObject<ShovelItem> STEEL_SHOVEL = ITEMS.register("steel_shovel", () -> new ShovelItem(SteelItemTier.STEEL, 1.5F, -3.0F, (new Item.Properties())));
     public static final RegistryObject<PickaxeItem> STEEL_PICKAXE = ITEMS.register("steel_pickaxe", () -> new PickaxeItem(SteelItemTier.STEEL, 1, -2.8F, (new Item.Properties())));
-    public static final RegistryObject<AxeItem> STEEL_AXE = ITEMS.register("steel_axe", () -> new AxeItem(SteelItemTier.STEEL, ConfigHandler.steel_axe_damage-3F, ConfigHandler.steel_axe_attack_speed-4F, (new Item.Properties())));
+    public static final RegistryObject<AxeItem> STEEL_AXE = ITEMS.register("steel_axe", () -> new AxeItem(SteelItemTier.STEEL, ConfigHandler.steel_axe_damage - 3F, ConfigHandler.steel_axe_attack_speed - 4F, (new Item.Properties())));
     public static final RegistryObject<HoeItem> STEEL_HOE = ITEMS.register("steel_hoe", () -> new HoeItem(SteelItemTier.STEEL, -2, -1.0F, (new Item.Properties())));
 
     public static final RegistryObject<FlintAndSteelItem> QUARTZ_AND_STEEL = ITEMS.register("quartz_and_steel", () -> new FlintAndSteelItem(new Item.Properties().durability(88)));
