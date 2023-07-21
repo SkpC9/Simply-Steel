@@ -107,7 +107,7 @@ public class RegistryHandler {
     public static final RegistryObject<AxeItem> STEEL_AXE = ITEMS.register("steel_axe", () -> new AxeItem(SteelItemTier.STEEL, ConfigHandler.steel_axe_damage - 3F, ConfigHandler.steel_axe_attack_speed - 4F, (new Item.Properties())));
     public static final RegistryObject<HoeItem> STEEL_HOE = ITEMS.register("steel_hoe", () -> new HoeItem(SteelItemTier.STEEL, -2, -1.0F, (new Item.Properties())));
 
-    public static final RegistryObject<FlintAndSteelItem> QUARTZ_AND_STEEL = ITEMS.register("quartz_and_steel", () -> new FlintAndSteelItem(new Item.Properties().durability(88)));
+    public static final RegistryObject<FlintAndSteelItem> QUARTZ_AND_STEEL = ITEMS.register("quartz_and_steel", () -> new FlintAndSteelItem(new Item.Properties().durability(ConfigHandler.quartz_and_steel_durability)));
     public static final RegistryObject<RNGFlintAndSteelItem> FLINT_AND_IRON = ITEMS.register("flint_and_iron", () -> new RNGFlintAndSteelItem(new Item.Properties().durability(64), 0.5F));
     public static final RegistryObject<RNGFlintAndSteelItem> QUARTZ_AND_IRON = ITEMS.register("quartz_and_iron", () -> new RNGFlintAndSteelItem(new Item.Properties().durability(88), 0.5F));
 
