@@ -86,6 +86,7 @@ Changelog
 
 - Added steel shears.
 - Added configurations, Please check the description for more info.
+- (1.20.1) Fixed steel anvil can be pushed by piston.
 
 </details>
 
