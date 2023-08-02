@@ -1,5 +1,4 @@
 {
-
   "advancement.story.simplysteel.blast_steel.title": "来更硬的",
   "advancement.story.simplysteel.blast_steel.description": "使用高炉冶炼出一块钢锭",
   "advancements.adventure.simplysteel.summon_steel_golem.title": "活体钢铁",
@@ -8,18 +7,14 @@
   "advancement.story.simplysteel.place_steel_anvil.description": "放置钢砧",
   "advancements.adventure.simplysteel.watch_the_world_burn.title": "Watch the World Burn",
   "advancements.husbandry.watch_the_world_burn.description": "用坏所有种类的打火石，然后检查你的san值",
-
   "entity.simplysteel.steel_golem": "钢傀儡",
-
   "block.simplysteel.steel_block": "钢块",
   "block.simplysteel.steel_bars": "钢栏杆",
   "block.simplysteel.steel_door": "钢门",
   "block.simplysteel.steel_trapdoor": "钢活板门",
-  "block.simplysteel.steel_anvil" : "钢砧",
-  "block.simplysteel.chipped_steel_anvil" : "开裂的钢砧",
-  "block.simplysteel.damaged_steel_anvil" : "损坏的钢砧",
-
-
+  "block.simplysteel.steel_anvil": "钢砧",
+  "block.simplysteel.chipped_steel_anvil": "开裂的钢砧",
+  "block.simplysteel.damaged_steel_anvil": "损坏的钢砧",
   "item.simplysteel.steel_ingot": "钢锭",
   "item.simplysteel.crude_iron": "生铁",
   "item.simplysteel.steel_nugget": "钢粒",
@@ -35,6 +30,22 @@
   "item.simplysteel.quartz_and_steel": "打火石（钢/石英）",
   "item.simplysteel.quartz_and_iron": "打火石（铁/石英）",
   "item.simplysteel.flint_and_iron": "打火石（铁）",
-  "item.simplysteel.steel_shears": "剪刀（钢）"
-
+  "item.simplysteel.steel_shears": "剪刀（钢）",
+  "item.simplysteel.steel_shield": "钢盾牌",
+  "item.simplysteel.steel_shield.black": "黑色钢盾牌",
+  "item.simplysteel.steel_shield.blue": "蓝色钢盾牌",
+  "item.simplysteel.steel_shield.brown": "棕色钢盾牌",
+  "item.simplysteel.steel_shield.cyan": "青色钢盾牌",
+  "item.simplysteel.steel_shield.gray": "灰色钢盾牌",
+  "item.simplysteel.steel_shield.green": "绿色钢盾牌",
+  "item.simplysteel.steel_shield.light_blue": "淡蓝色钢盾牌",
+  "item.simplysteel.steel_shield.light_gray": "淡灰色钢盾牌",
+  "item.simplysteel.steel_shield.lime": "黄绿色钢盾牌",
+  "item.simplysteel.steel_shield.magenta": "品红色钢盾牌",
+  "item.simplysteel.steel_shield.orange": "橙色钢盾牌",
+  "item.simplysteel.steel_shield.pink": "粉红色钢盾牌",
+  "item.simplysteel.steel_shield.purple": "紫色钢盾牌",
+  "item.simplysteel.steel_shield.red": "红色钢盾牌",
+  "item.simplysteel.steel_shield.white": "白色钢盾牌",
+  "item.simplysteel.steel_shield.yellow": "黄色钢盾牌"
 }

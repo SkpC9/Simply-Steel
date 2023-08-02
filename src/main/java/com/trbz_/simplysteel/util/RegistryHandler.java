@@ -6,6 +6,7 @@ import com.trbz_.simplysteel.blocks.SteelAnvilBlock;
 import com.trbz_.simplysteel.entities.FallingSteelAnvil;
 import com.trbz_.simplysteel.entities.SteelGolem;
 import com.trbz_.simplysteel.items.RNGFlintAndSteelItem;
+import com.trbz_.simplysteel.items.SteelShieldItem;
 import com.trbz_.simplysteel.tools.SteelItemTier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -112,6 +113,9 @@ public class RegistryHandler {
     public static final RegistryObject<RNGFlintAndSteelItem> QUARTZ_AND_IRON = ITEMS.register("quartz_and_iron", () -> new RNGFlintAndSteelItem(new Item.Properties().durability(88), 0.5F));
 
     public static final RegistryObject<ShearsItem> STEEL_SHEARS = ITEMS.register("steel_shears", () -> new ShearsItem(new Item.Properties().durability(ConfigHandler.steel_shears_durability)));
+
+    public static final RegistryObject<SteelShieldItem> STEEL_SHIELD = ITEMS.register("steel_shield", () -> new SteelShieldItem((new Item.Properties()).durability(ConfigHandler.steel_shield_durability)));
+
 
     //Armor
 

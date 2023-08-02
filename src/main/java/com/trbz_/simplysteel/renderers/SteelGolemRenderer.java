@@ -20,10 +20,12 @@ public class SteelGolemRenderer extends MobRenderer<SteelGolem, IronGolemModel<S
         this.addLayer(new SteelGolemFlowerLayer(this));
     }
 
+    @Override
     public ResourceLocation getTextureLocation(SteelGolem p_115012_) {
         return GOLEM_LOCATION;
     }
 
+    @Override
     protected void setupRotations(SteelGolem p_115014_, PoseStack p_115015_, float p_115016_, float p_115017_, float p_115018_) {
         super.setupRotations(p_115014_, p_115015_, p_115016_, p_115017_, p_115018_);
         if (!((double) p_115014_.walkAnimation.speed() < 0.01D)) {

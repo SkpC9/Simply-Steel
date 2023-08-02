@@ -34,6 +34,7 @@ public class CreativeTabHandler {
             event.accept(RegistryHandler.STEEL_CHESTPLATE.get());
             event.accept(RegistryHandler.STEEL_LEGGINGS.get());
             event.accept(RegistryHandler.STEEL_BOOTS.get());
+            event.accept(RegistryHandler.STEEL_SHIELD.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {

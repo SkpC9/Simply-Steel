@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "simplysteel:block/steel_block" }
+    "": {
+      "model": "simplysteel:block/steel_block"
+    }
   }
 }
