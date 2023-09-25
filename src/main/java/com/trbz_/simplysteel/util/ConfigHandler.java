@@ -18,7 +18,7 @@ public class ConfigHandler {
     private static final Logger logger = LogManager.getLogger(SimplySteel.class);
     public static final ConfigHandler INSTANCE = new ConfigHandler();
     //    public static final String VERSION = "${mod_version}";
-    public static final ComparableVersion VERSION = new ComparableVersion("2.3.2");
+    public static final ComparableVersion VERSION = new ComparableVersion("2.3.1");
     // values exposed to other classes
     public static int steel_item_harvest_level;
     public static int steel_item_durability;
@@ -30,7 +30,6 @@ public class ConfigHandler {
     public static float steel_axe_attack_speed;
     public static int steel_shears_durability;
     public static int quartz_and_steel_durability;
-    public static int steel_shield_durability;
 
     public static int steel_armor_maxDamageFactor;
     public static int steel_armor_enchantability;
@@ -66,7 +65,6 @@ public class ConfigHandler {
         steel_axe_attack_speed = 0.9F;
         steel_shears_durability = 460;
         quartz_and_steel_durability = 88;
-        steel_shield_durability = 650;
 
         steel_armor_maxDamageFactor = 20;
         steel_armor_enchantability = 11;
@@ -158,9 +156,6 @@ public class ConfigHandler {
                             break;
                         case "quartz_and_steel_durability":
                             quartz_and_steel_durability = (int) value;
-                            break;
-                        case "steel_shield_durability":
-                            steel_shield_durability = (int) value;
                             break;
                         case "steel_armor_maxDamageFactor":
                             steel_armor_maxDamageFactor = (int) value;
@@ -257,9 +252,6 @@ public class ConfigHandler {
             writer.write("\n");
             writer.write("# Default:88\n");
             writer.write("quartz_and_steel_durability = " + quartz_and_steel_durability + "\n");
-            writer.write("\n");
-            writer.write("# Default:650\n");
-            writer.write("steel_shield_durability = " + steel_shield_durability + "\n");
             writer.write("\n");
             writer.write("\n");
             writer.write("[Steel Armors]\n");

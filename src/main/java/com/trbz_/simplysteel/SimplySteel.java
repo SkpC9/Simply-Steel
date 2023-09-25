@@ -9,6 +9,9 @@ import com.trbz_.simplysteel.setup.IProxy;
 import com.trbz_.simplysteel.setup.ServerProxy;
 import com.trbz_.simplysteel.util.ConfigHandler;
 import com.trbz_.simplysteel.util.RegistryHandler;
+import net.minecraft.core.dispenser.ShearsDispenseItemBehavior;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -55,8 +58,6 @@ public class SimplySteel {
 
     @SubscribeEvent
     public void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
-        // this MAP stores attributes like health and damage. Maybe regular forge config can handle these values.
-        // Actually can't : https://forums.minecraftforge.net/topic/99026-1165-entityattributecreationevent-with-config-values/
         event.put(SteelGolem.TYPE, SteelGolem.MAP);
     }
 
